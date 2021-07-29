@@ -9,10 +9,45 @@
   </head>
   <body>
     <h1 class="books-title">Books</h1>
-    <button>Add Book</button>
+    <form action="" method="POST" class="add-book-form" id="add-book-form">
+      <div class="add-book-form">
+        <label for="title">Title: </label>
+        <input type="text" name="title" id="title" />
+      </div>
+      <div class="add-book-form">
+        <label for="author">Author: </label>
+        <input type="text" name="author" id="author" />
+      </div>
+      <div class="add-book-form">
+        <label for="pages">Pages: </label>
+        <input type="number" name="pages" id="pages" />
+      </div>
+      <div class="add-book-form">
+        <label for="read-status">Read Status? </label>
+        <input
+          type="radio"
+          id="unread"
+          name="read-status"
+          value="unread"
+          checked
+        />
+        <label for="unread">Unread</label>
+        <input type="radio" id="read" name="read-status" value="read" />
+        <label for="read">Read</label>
+      </div>
+      <div class="add-book-form">
+        <input
+          type="submit"
+          value="Add Book"
+          class="add-book-form-submit-button"
+        />
+      </div>
+    </form>
+
     <div class="books-container">
       <ul class="books-list"></ul>
     </div>
+    <button class="refresh-books-button">Refresh Books</button>
     <script src="main.js"></script>
   </body>
 </html>
