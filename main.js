@@ -44,14 +44,11 @@ function handleBookSubmisson(e) {
   let title = document.querySelector("#title").value;
   let author = document.querySelector("#author").value;
   let pages = document.querySelector("#pages").value;
-  let readStatus = document.querySelector("#unread").checked;
+  let readStatus = document.querySelector("#read").checked;
 
   let newBook = new Book(`${title}`, `${author}`, `${pages}`, `${readStatus}`);
 
-  return addBookToLibrary(newBook);
-}
-
-function handleRefreshBookList() {
+  addBookToLibrary(newBook);
   displayBooks(myLibrary);
 }
 
