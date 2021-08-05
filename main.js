@@ -1,8 +1,5 @@
 let booksList = document.querySelector(".books-list");
 let addBookSubmit = document.querySelector(".add-book-form-submit-button");
-let updateReadStatusButton = document.querySelectorAll(
-  ".update-read-status-button"
-);
 
 function Book(title, author, pages, read) {
   this.title = title;
@@ -25,7 +22,7 @@ Book.prototype.info = function () {
 };
 
 Book.prototype.updateReadStatus = function () {
-  return (this.read = !this.read);
+  return !this.read;
 };
 
 function addBookToLibrary(book) {
@@ -69,16 +66,29 @@ function handleBookSubmisson(e) {
 
 function addButtonLogic() {
   let removeBookButton = document.querySelectorAll(".remove-book-button");
+  let updateReadStatusButton = document.querySelectorAll(
+    ".update-read-status-button"
+  );
 
   for (let i = 0; i < removeBookButton.length; i++) {
     removeBookButton[i].addEventListener("click", handleRemoveBook);
+  }
+
+  for (let i = 0; i < updateReadStatusButton.length; i++) {
+    updateReadStatusButton[i].addEventListener("click", handleUpdateReadStatus);
   }
 }
 
 function handleRemoveBook(e) {
   let bookToRemove = e.target.parentNode.id;
-  console.log(myLibrary[bookToRemove]);
   myLibrary.splice(bookToRemove, 1);
+
+  displayBooks(myLibrary);
+}
+
+function handleUpdateReadStatus(e) {
+  let bookID = e.target.parentNode.id;
+  myLibrary[bookID].read = myLibrary[bookID].updateReadStatus();
 
   displayBooks(myLibrary);
 }
